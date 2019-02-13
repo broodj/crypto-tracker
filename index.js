@@ -18,6 +18,13 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+
+
 app.post('/', function(req, res){
-  console.log(req.body.fiat + " " + req.body.crypto);
+
+
+
+  request('https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCUSD', function(error, response, body){
+    console.log(body.open.hour);
+  });
 });
