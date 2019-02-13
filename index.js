@@ -18,10 +18,14 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  request('https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCUSD', function(error, response, body){
+
+  var fiat = req.body.fiat;
+  var crypto = req.body.crypto;
+
+  request(('https://apiv2.bitcoinaverage.com/indices/global/ticker/' + crypto + fiat), function(error, response, body){
     var data = JSON.parse(body);
     var price = data.last;
 
-    res.send(`The price of BTC is currently ${price}`);
+    res.send(`<h1>The price of ${crypto} is currently ${price}${fiat}</h1>`);
   });
 });
