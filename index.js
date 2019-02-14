@@ -21,9 +21,8 @@ app.post('/', function(req, res){
   var fiat = req.body.fiat;
   var crypto = req.body.crypto;
   var amount = req.body.amount;
-
+  
   var baseUrl = 'https://apiv2.bitcoinaverage.com/convert/global';
-
 
   var options = {
     url: baseUrl,
